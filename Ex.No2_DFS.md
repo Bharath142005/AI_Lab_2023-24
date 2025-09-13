@@ -1,6 +1,6 @@
 # Ex.No: 2  Implementation of Depth First Search
-### DATE:  05/09/2025                                                                         
-### REGISTER NUMBER :  212222060024
+### DATE: 19-08-2025                                                                            
+### REGISTER NUMBER : 212221060113
 ### AIM: 
 To write a python program to implement Depth first Search. 
 ### Algorithm:
@@ -12,30 +12,34 @@ To write a python program to implement Depth first Search.
 6. Call the dfs function by passing arguments visited, graph and starting node.
 7. Stop the program.
 ### Program:
-
-# Using a Python dictionary to act as an adjacency list
-graph = {
-'5' : ['3','7'],
-'3' : ['2', '4'],
-'7' : ['8'],
-'2' : [],
-'4' : ['8'],
-'8' : []
-}
-visited = set() # Set to keep track of visited nodes of graph.
-def dfs(visited, graph, node): #function for dfs
+```
+def dfs(graph, node, visited):
     if node not in visited:
-        print (node)
+        print(node, end=' ')
         visited.add(node)
-        for neighbour in graph[node]:
-            dfs(visited, graph, neighbour)
-# Driver Code
-print("Following is the Depth-First Search")
-dfs(visited, graph, '5')
+        if node in graph:
+            for neighbor in graph[node]:
+                dfs(graph, neighbor, visited)
+
+# Given partial graph
+graph = {
+    '1': ['2', '3'],
+    '2': ['4', '5'],
+    '3': ['6', '7'],
+}
+
+# Set to keep track of visited nodes
+visited = set()
+
+# Perform DFS traversal starting from each node if not visited
+print("DFS traversal starting from each node:")
+for node in graph:
+    dfs(graph, node, visited)
+```
 
 ### Output:
 
-![image](https://github.com/Sudhindev/AI_Lab_2023-24/assets/130021386/9c3520b2-9bc0-4a79-8b10-2a9587bb882f)
+![image](https://github.com/Chandru0021/AI_Lab_2023-24/assets/131637082/8589dea6-a1df-42fc-81e5-d196f345534c)
 
 
 ### Result:
