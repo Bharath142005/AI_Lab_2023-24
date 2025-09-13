@@ -46,7 +46,7 @@ print(minimax(0, 0, True, scores, treeDepth))
 
 
 ### Output:
-![Uploading image.png…]()
+<img width="1920" height="1080" alt="Screenshot 2025-09-13 090501" src="https://github.com/user-attachments/assets/b5f8f4f7-565b-463f-a968-ff595e126864" />
 
 
 
