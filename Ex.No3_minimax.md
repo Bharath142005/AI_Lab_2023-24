@@ -1,4 +1,3 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/97a3e8be-c9f0-4f03-8d83-25e97ee8d5d8" /># Ex.No: 3  Implementation of Minimax Search
 ### DATE: 21-02-2024                                                                        
 ### REGISTER NUMBER : 212221060110
 ### AIM: 
