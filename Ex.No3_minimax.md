@@ -1,5 +1,5 @@
-### DATE: 21-02-2024                                                                        
-### REGISTER NUMBER : 212221060110
+### DATE: 13-09-2025                                                                        
+### REGISTER NUMBER : 212222060024
 ### AIM: 
 Write a mini-max search algorithm to find the optimal value of MAX Player from the given graph.
 ### Algorithm:
