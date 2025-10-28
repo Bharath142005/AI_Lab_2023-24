@@ -1,65 +1,91 @@
-# Ex.No: 13 Machine Learning – Mini Project  
-### DATE:                                                                         
-### REGISTER NUMBER : 212222060024
-### AIM: 
-To write a program to train the classifier for Diabetes.
-###  Algorithm:
-Step 1: Import packages. 
-Step 2: Get the data.
-Step 3: Split the data.  
-Step 4: Scale the data.  
-Step 5: Instantiate model. 
-Step 6: Create a function for gradio.
-Step 7: Print Result.
+Ex.No: 13 Learning – Use Supervised Learning
+DATE:28/10/2025
+REGISTER NUMBER : 212223040177
+AIM:
+To write a program to train the classifier for electric car performance and battery dataset
 
-### Program:
-```
-import numpy as np
+Algorithm:
+1.Start
+
+2.Load the dataset
+
+3.Create target variable
+
+4.Select useful futures
+
+5.encode categorical data
+
+6.Split the dataset
+
+7.Normalise data
+
+8.Train the classifier
+
+9.Evaluate the model
+
+10.Stop
+
+Program:
 import pandas as pd
-pip install gradio
-pip install typing-extensions --upgrade
-pip install --upgrade typing
-pip install typing-extensions --upgrade
-import gradio as gr
-data = pd.read_csv('/content/diabetes.csv')
-data.head()
-print(data.columns)
-x = data.drop(['Outcome'], axis=1)
-y = data['Outcome']
-print(x[:5])
-#split data
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
-x_train, x_test, y_train, y_test= train_test_split(x,y)
+# Load dataset
+data = pd.read_csv("/mnt/data/electric_vehicles_spec_2025.csv.csv")
 
-from sklearn.preprocessing import StandardScaler
-scaler = StandardScaler()
-x_train_scaled = scaler.fit_transform(x_train)
-x_test_scaled = scaler.fit_transform(x_test)
-
-from sklearn.neural_network import MLPClassifier
-model = MLPClassifier(max_iter=1000, alpha=1)
-model.fit(x_train, y_train)
-print("Model Accuracy on training set:", model.score(x_train, y_train))
-print("Model Accuracy on Test Set:", model.score(x_test, y_test))
-
-def diabetes(Pregnancies, Glucose, Blood_Pressure, SkinThickness, Insulin, BMI,Diabetes_Pedigree, Age):
-    x = np.array([Pregnancies,Glucose,Blood_Pressure,SkinThickness,Insulin,BMI,Diabetes_Pedigree,Age])
-    prediction = model.predict(x.reshape(1, -1))
-    if(prediction==0):
-      return "NO"
+def categorize_performance(row):
+    if row['top_speed_kmh'] >= 200 and row['acceleration_0_100_s'] <= 5.0:
+        return 'High'
+    elif row['top_speed_kmh'] >= 160 and row['acceleration_0_100_s'] <= 7.0:
+        return 'Medium'
     else:
-      return "YES"
+        return 'Low'
 
-outputs = gr.Textbox()
-app = gr.Interface(fn=diabetes, inputs=['number','number','number','number','number','number','number','number'], outputs=outputs,description="Detection of Diabeties")
-app.launch(share=True)
-```
+data['performance_class'] = data.apply(categorize_performance, axis=1)
 
-### Output:
-![1](https://github.com/user-attachments/assets/2c9d8b8d-f170-4f28-a5c6-deb82c964f71)
+print("Class distribution:")
+print(data['performance_class'].value_counts())
 
-![2](https://github.com/user-attachments/assets/65d25248-c345-4a50-84e4-4477b0d8e034)
+features = [
+    'top_speed_kmh', 'battery_capacity_kWh', 'torque_nm',
+    'efficiency_wh_per_km', 'range_km', 'acceleration_0_100_s',
+    'seats', 'drivetrain', 'segment', 'car_body_type'
+]
 
-### Result:
+df = data[features + ['performance_class']].dropna()
+
+label_encoders = {}
+for col in ['drivetrain', 'segment', 'car_body_type']:
+    le = LabelEncoder()
+    df[col] = le.fit_transform(df[col])
+    label_encoders[col] = le
+
+X = df.drop('performance_class', axis=1)
+y = df['performance_class']
+
+# Encode target
+target_encoder = LabelEncoder()
+y = target_encoder.fit_transform(y)
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+model = RandomForestClassifier(n_estimators=150, random_state=42)
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+print("\nModel Accuracy:", accuracy_score(y_test, y_pred))
+print("\nClassification Report:\n", classification_report(y_test, y_pred, target_names=target_encoder.classes_))
+print("\nConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
+
+
+Output:
+Screenshot 2025-10-28 081917 Screenshot 2025-10-28 081941
+Result:
 Thus the system was trained successfully and the prediction was carried out.
+
