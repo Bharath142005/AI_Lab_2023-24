@@ -1,31 +1,40 @@
-Ex.No: 13 Learning – Use Supervised Learning
-DATE:28/10/2025
-REGISTER NUMBER : 212222060024
-AIM:
+# AI-MINI-PROJECT
+# Ex.No: 13 Learning – Use Supervised Learning  
+### DATE:15/11/2025                                                                            
+### REGISTER NUMBER : 212222060024
+### AIM: 
 To write a program to train the classifier for electric car performance and battery dataset
-
-Algorithm:
+###  Algorithm:
 1.Start
+
 
 2.Load the dataset
 
+
 3.Create target variable
+
 
 4.Select useful futures
 
+
 5.encode categorical data
+
 
 6.Split the dataset
 
+
 7.Normalise data
+
 
 8.Train the classifier
 
+
 9.Evaluate the model
 
-10.Stop
 
-Program:
+10.Stop
+### Program:
+```
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
@@ -84,8 +93,11 @@ print("\nClassification Report:\n", classification_report(y_test, y_pred, target
 print("\nConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
 
 
-Output:
-Screenshot 2025-10-28 081917 Screenshot 2025-10-28 081941
-Result:
-Thus the system was trained successfully and the prediction was carried out.
+```
 
+### Output:
+<img width="626" height="96" alt="Screenshot 2025-10-28 081917" src="https://github.com/user-attachments/assets/9201ab95-81a8-4c86-a520-52e07056f007" />
+<img width="606" height="429" alt="Screenshot 2025-10-28 081941" src="https://github.com/user-attachments/assets/4be9fb35-73c4-4cfc-9034-43a1ce35168b" />
+
+### Result:
+Thus the system was trained successfully and the prediction was carried out.
