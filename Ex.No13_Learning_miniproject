@@ -96,8 +96,6 @@ print("\nConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
 ```
 
 ### Output:
-<img width="626" height="96" alt="Screenshot 2025-10-28 081917" src="https://github.com/user-attachments/assets/9201ab95-81a8-4c86-a520-52e07056f007" />
-<img width="606" height="429" alt="Screenshot 2025-10-28 081941" src="https://github.com/user-attachments/assets/4be9fb35-73c4-4cfc-9034-43a1ce35168b" />
 
 ### Result:
 Thus the system was trained successfully and the prediction was carried out.
