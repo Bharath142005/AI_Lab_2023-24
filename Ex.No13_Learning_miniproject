@@ -97,5 +97,6 @@ print("\nConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
 
 ### Output:
 
+
 ### Result:
 Thus the system was trained successfully and the prediction was carried out.
